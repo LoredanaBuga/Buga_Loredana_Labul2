@@ -17,5 +17,8 @@ namespace Buga_Loredana_Labul2.Data
         public DbSet<Buga_Loredana_Labul2.Models.Book> Book { get; set; } = default!;
         public DbSet<Buga_Loredana_Labul2.Models.Publisher> Publisher { get; set; } = default!;
         public DbSet<Author> Author { get; set; } = default!;
+        public DbSet<Buga_Loredana_Labul2.Models.Category> Category { get; set; } = default!;
+        public DbSet<Buga_Loredana_Labul2.Models.Member> Member { get; set; } = default!;
+        public DbSet<Buga_Loredana_Labul2.Models.Borrowing> Borrowing { get; set; } = default!;
     }
 }

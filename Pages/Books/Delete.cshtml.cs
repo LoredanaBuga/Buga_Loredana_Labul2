@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Buga_Loredana_Labul2.Data;
+using Buga_Loredana_Labul2.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Buga_Loredana_Labul2.Data;
-using Buga_Loredana_Labul2.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Buga_Loredana_Labul2.Pages.Books
 {
+    [Authorize(Roles = "Admin")]
+
     public class DeleteModel : PageModel
     {
         private readonly Buga_Loredana_Labul2.Data.Buga_Loredana_Labul2Context _context;

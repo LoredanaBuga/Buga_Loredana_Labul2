@@ -19,9 +19,9 @@
                 <span asp-validation-for="Book.Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Book.Author" class="control-label"></label>
-                <input asp-for="Book.Author" class="form-control" />
-                <span asp-validation-for="Book.Author" class="text-danger"></span>
+                <label asp-for="Book.AuthorID" class="control-label">Author</label>
+                <select asp-for="Book.AuthorID" class="form-control" asp-items="ViewBag.AuthorID"></select>
+                <span asp-validation-for="Book.AuthorID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Book.Price" class="control-label"></label>
@@ -40,10 +40,34 @@
                 <span asp-validation-for="Book.PublisherID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Book.AuthorID" class="control-label">Author</label>
-                <select asp-for="Book.AuthorID" class="form-control" asp-items="ViewBag.AuthorID"></select>
-                <span asp-validation-for="Book.AuthorID" class="text-danger"></span>
-            </div>
+    <div class="table">
+        <table>
+            <tr>
+                @{
+                    int cnt = 0;
+                    // Iterația prin lista de categorii alocate
+                    foreach (var cat in Model.AssignedCategoryDataList)
+                    {
+                        // La fiecare a treia categorie, începe un rând nou (închide rândul anterior)
+                        if (cnt++ % 3 == 0)
+                        {
+                            @:</tr><tr>
+                        }
+                        
+                        // Creează celula tabelului
+                        @:<td>
+                            <input type="checkbox"
+                                   name="selectedCategories"
+                                   value="@cat.CategoryID"
+                                   @(Html.Raw(cat.Assigned ? "checked=\"checked\"" : "")) />
+                            @cat.CategoryID @: @cat.Name
+                        @:</td>
+                    }
+                @:</tr>
+                }
+            </table>
+        </div>
+    </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
